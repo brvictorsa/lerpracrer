@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cadastrar Livro</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+		<link href="css/Cadastro_livro.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+		<link rel="icon" type="image/png" href="images/icons/Icone.png"/>
+	</head>
+	<body>
+		<!-- NAV BAR -->
+		<nav class="navbar">
+			<a id="Link_navbar" class="navbar-brand" href="inicial.html">
+				<img src="images/icons/Icone_Nav.png" width="250" height="45" class="d-inline-block align-top" alt="" loading="lazy">
+			</a>
+			<!-- <form class="form-inline">
+				<a href="../Back/Sair.php"><button class="btn btn-sm btn-outline-info" type="button">Sair</button></a>
+			</form> -->
+			
+			<div id="navbar-list-4">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#00ffffcb" class="bi bi-person-circle" viewBox="0 0 16 16">
+						<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+						<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+					</svg>			</a> 
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="configuracoes_conta.html">Configurações da conta</a>
+					<a class="dropdown-item" href="livros_cadastrados.html">Meus livros</a>
+					<a class="dropdown-item" href="index.html">Sair</a>
+				</div>
+			</div>
+		</nav>
+		<!-- //NAV BAR -->  
+
+		<!-- main -->
+		<div class="main-w3layouts wrapper">
+			<h1>Cadastrar livro</h1><br>
+			<div class="main-agileinfo">
+				<div class="agileits-top">
+					<div class="tab">
+						<label id="Label_form" for="Título">Título:</label><br>
+						<input class="text" type="text" name="Titulo" placeholder="Titulo" required=""><br>
+						<label id="Label_form" for="Autor">Autor:</label><br>
+						<input class="text" type="text" name="Autor" placeholder="Autor" required=""><br>
+						<label id="Label_form" for="Editora">Editora:</label><br>
+						<input class="text" type="text" name="Editora" placeholder="Editora" required=""><br>
+						<label id="Label_form" for="Edição">Edição:</label><br>
+						<input class="text" type="text" name="Edicao" placeholder="Edicao" required=""><br>
+						<label id="Label_form" for="ISBN">ISBN:</label><br>
+						<input class="text" type="text" name="ISBN" placeholder="ISBN" required=""><br>
+					
+						<br><br>
+						<label id="Label_form" for="Finalidade">O que deseja fazer com o livro?</label><br>
+						<div class="wthree-text">
+							<label class="anim">
+								<input class="checkbox" type="radio" value="" id="flexCheckChecked" name="checkbox" value="opcao2" checked>
+								<label class="form-check-label" for="flexCheckChecked"></label>
+								<span>Doar</span>
+								<label class="form-check-label" for="flexCheckChecked"></label>
+							</label>
+							<div class="clear"> </div>
+						</div>
+						<div class="wthree-text">
+							<label class="anim">
+								<input class="checkbox" type="radio" value="" id="flexCheckChecked" name="checkbox" value="opcao3" checked>
+								<label class="form-check-label" for="flexCheckChecked"></label>
+								<span>Vender</span>
+								<label class="form-check-label" for="flexCheckChecked"></label>
+							</label>
+							<div class="clear"> </div>
+						</div>
+						<div class="wthree-text">
+							<label class="anim">
+								<input class="checkbox" type="radio" value="" id="flexCheckChecked" name="checkbox" value="opcao3" checked>
+								<label class="form-check-label" for="flexCheckChecked"></label>
+								<span>Emprestar</span>
+								<label class="form-check-label" for="flexCheckChecked"></label>
+							</label>
+							<div class="clear"> </div>
+						</div>
+						<div class="wthree-text">
+							<label class="anim">
+								<input class="checkbox" type="radio" value="" id="flexCheckChecked" name="checkbox" value="opcao4" checked>
+								<label class="form-check-label" for="flexCheckChecked"></label>
+								<span>Trocar</span>
+								<label class="form-check-label" for="flexCheckChecked"></label>
+							</label>
+							<div class="clear"> </div>
+						</div>
+						<div class="wthree-text">
+							<label class="anim">
+								<input class="checkbox" type="radio" value="" id="flexCheckChecked" name="checkbox" value="opcao5" checked>
+								<label class="form-check-label" for="flexCheckChecked"></label>
+								<span>Aberto para decidir</span>
+								<label class="form-check-label" for="flexCheckChecked"></label>
+							</label>
+							<div class="clear"> </div>
+						</div>
+
+						<br><br><br>
+						<div>
+							<label id="Label_form" for="classifi">Selecione a classificação indicativa</label><br>
+							<select id="classifi">
+								<option value="1">Livre</option>
+								<option value="2">10 anos</option>
+								<option value="3">12 anos</option>
+								<option value="3">14 anos</option>
+								<option value="3">16 anos</option>
+								<option value="3">18 anos</option>
+							</select>
+						</div>
+
+						<br><br><br>
+						<div>
+							<label id="Label_form" for="multiple-checkboxes">Selecione a/as categorias</label><br>
+							<select id="multiple-checkboxes"  multiple="multiple">
+								<option value="romance">Romance</option>
+								<option value="drama">Drama</option>
+								<option value="novela">Novela</option>
+								<option value="conto">Conto</option>
+								<option value="cronica">Crônica</option>
+								<option value="ensaio">Ensaio</option>
+								<option value="poesia">Poesia</option>
+								<option value="carta">Carta</option>
+								<option value="ensaio">Ensaio</option>
+								<option value="biografia">Biografia</option>
+								<option value="memorias">Memórias</option>
+								<option value="ficcao">Ficção</option>
+								<option value="hq">HQ</option>
+								<option value="infantil">Infantil</option>
+								<option value="adulto">Adulto</option>
+								<option value="outro">Outro</option>
+							</select> 
+						</div>
+
+						<br><br><br>
+						<label id="Label_form" for="foto">Escolha a foto de capa do livro</label><br>
+						<input class="btn btn-primary escolher" type="file" name="arquivos" accept="image/png, image/jpeg"  multiple ></input>
+						
+						<br><br>
+						<input type="submit" value="Finalizar Cadastro" onclick=""></input>
+
+					</div>
+				</div> 
+			</div>
+			<div class="rodapé">
+				<p>© 2020 Ler para Crer</p>
+			</div>
+		</div>
+		<!-- //main -->
+		
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+
+	<script>
+		function validateForm() {
+		// This function deals with validation of the form fields
+		var x, y, i, valid = true;
+		x = document.getElementsByClassName("tab");
+		y = x[currentTab].getElementsByTagName("input");
+		// A loop that checks every input field in the current tab:
+		for (i = 0; i < y.length; i++) {
+		// If a field is empty...
+		if (y[i].value == "") {
+			// add an "invalid" class to the field:
+			y[i].className += " invalid";
+			// and set the current valid status to false
+			valid = false;
+		}
+		}
+		// If the valid status is true, mark the step as finished and valid:
+		if (valid) {
+		document.getElementsByClassName("step")[currentTab].className += " finish";
+		}
+		return valid; // return the valid status
+	}
+
+	</script>
+
+	<script>
+		$(document).ready(function() {
+			$('#multiple-checkboxes').multiselect({
+			includeSelectAllOption: true,
+			nonSelectedText: 'selecionar',
+			allSelectedText: 'Todas',
+			selectAllText: 'Marcas todas',
+			nSelectedText: 'Selecionadas'
+
+			});
+
+			$('#classifi').multiselect({
+			includeSelectAllOption: false,
+			});
+		});
+	</script>
+	</body>
+</html>
