@@ -1,47 +1,85 @@
 package br.com.lerpracrer.resource;
 
+import br.com.lerpracrer.controller.LivroController;
 import br.com.lerpracrer.model.Livro;
+import br.com.lerpracrer.repository.LivroRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping(value ="/api/livros")
 public class LivroResource {
 
+    @Autowired
+    private LivroRepository livroRepository;
+
     @GetMapping
     public List<Livro> getAll() {
-        Livro livro1 = new Livro("Código limpo: habilidades práticas do Agile Software",
-                "Robert C. Martin",
-                "Alta Books",
-                456);
-
-        Livro livro2 = new Livro("Data science para negócios",
-                "Foster Provost",
-                "Alta Books",
-                404);
-
-        ArrayList<Livro> livros = new ArrayList<>();
-        livros.add(livro1);
-        livros.add(livro2);
-
-        return livros;
+        return livroRepository.findAll();
     }
 
     @GetMapping(value="/{id}")
     public ResponseEntity<Livro> get(@PathVariable(value = "id") long id) {
-        Livro livro = new Livro("Código limpo: habilidades práticas do Agile Software",
-                "Robert C. Martin",
-                "Alta Books",
-                456);
+        Livro livro = livroRepository.findById(id);
 
-        return new ResponseEntity<Livro>(livro, HttpStatus.OK);
+        if(livro == null) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+        else {
+            return new ResponseEntity<>(livro, HttpStatus.OK);
+        }
+    }
+
+    @PostMapping(value="/incluir")
+    public ResponseEntity<Livro> include(@RequestBody Livro livro) {
+        LivroController livroController = new LivroController();
+        livroController.validar(livro);
+
+        if(livroController.getValidator().isValid()) {
+            livro = livroRepository.save(livro);
+            return new ResponseEntity<Livro>(livro, HttpStatus.OK);
+        } else {
+            return new ResponseEntity(livroController.getValidator().getMensagensValidacao(), HttpStatus.OK);
+        }
+    }
+
+    @PutMapping(value="/editar/{id}")
+    public ResponseEntity<Livro> edit(@PathVariable(value="id") long id, @RequestBody Livro dadosLivro) {
+        LivroController livroController = new LivroController();
+        livroController.validar(dadosLivro);
+
+        if(livroController.getValidator().isValid()) {
+            Livro dbLivro = livroRepository.findById(id);
+            if(dbLivro != null) {
+                Livro livro = dbLivro;
+                livro.setTitulo(dadosLivro.getTitulo());
+                livro.setAutor(dadosLivro.getAutor());
+                livro.setEdicao(dadosLivro.getEdicao());
+                livro.setEditora(dadosLivro.getEditora());
+                livro.setAnoPublicacao(dadosLivro.getAnoPublicacao());
+                livro.setNumeroDePaginas(dadosLivro.getNumeroDePaginas());
+                livro.setDescricao(dadosLivro.getDescricao());
+                livro.setIsbn10(dadosLivro.getIsbn10());
+                livro.setIsbn13(dadosLivro.getIsbn13());
+
+                livro = livroRepository.save(livro);
+                return new ResponseEntity(livro, HttpStatus.OK);
+            }
+            else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity(livroController.getValidator().getMensagensValidacao(), HttpStatus.OK);
+        }
+    }
+
+    @DeleteMapping(value = "/remover/{id}")
+    public ResponseEntity<Livro> remover(@PathVariable(value="id") long id) {
+        livroRepository.deleteById(id);
+        return new ResponseEntity("Livro excluído", HttpStatus.OK);
     }
 }

@@ -17,6 +17,7 @@ package br.com.lerpracrer.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -26,31 +27,33 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String titulo;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String autor;
 
     private byte edicao;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String editora;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private int anoPublicacao;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private int numeroDePaginas;
 
-    @Column(length = 300)
-    private String sinopse;
+    //@Column(nullable = false, columnDefinition = "TEXT")
+    private String descricao;
 
-    @Column(length = 10)
+    //@Column(length = 10)
     private String isbn10;
 
-    @Column(length = 14)
+    //@Column(length = 14)
     private String isbn13;
+
+//    private String imagem;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private Date cadastradoEm;
@@ -59,10 +62,20 @@ public class Livro {
         this.cadastradoEm = new Date();
     }
 
+    public Livro(String titulo, String autor, String editora, String descricao, int numeroDePaginas) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.editora = editora;
+        this.descricao = descricao;
+        this.numeroDePaginas = numeroDePaginas;
+        this.cadastradoEm = new Date();
+    }
+
     public Livro(String titulo, String autor, String editora, int numeroDePaginas) {
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
+        this.descricao = descricao;
         this.numeroDePaginas = numeroDePaginas;
         this.cadastradoEm = new Date();
     }
@@ -115,12 +128,12 @@ public class Livro {
         this.numeroDePaginas = numeroDePaginas;
     }
 
-    public String getSinopse() {
-        return sinopse;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setSinopse(String sinopse) {
-        this.sinopse = sinopse;
+    public void setDescricao(String sinopse) {
+        this.descricao = sinopse;
     }
 
     public String getIsbn10() {
@@ -139,7 +152,16 @@ public class Livro {
         this.isbn13 = isbn13;
     }
 
-    public Date getCadastradoEm() {
-        return cadastradoEm;
+//    public String getImagem() {
+//        return imagem;
+//    }
+//
+//    public void setImagem(String imagem) {
+//        this.imagem = imagem;
+//    }
+
+    public String getCadastradoEm() {
+        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return fmt.format(this.cadastradoEm);
     }
 }
