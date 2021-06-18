@@ -1,47 +1,85 @@
 <!DOCTYPE html>
-<html>
-	<head>
-	<title>Login</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-	<link href="css/Login.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-	<link rel="icon" type="image/png" href="images/icons/Icone.png"/>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/Login2.css" />
+  <title>Login</title>
+</head>
+<body>
+  <div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <form action="#" class="sign-in-form">
+          <h2 class="title">Login</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Usuário" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Senha" />
+          </div>
+          <input type="submit" value="Acessar" class="btn solid" />
+          <p class="social-text">Ler para crer &copy; 2021</p>
+        </form>
+        <form action="#" class="sign-up-form">
+          <h2 class="title">Cadastrar</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Usuário" />
+          </div>
+          <!--<div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="E-mail" />
+          </div>-->
+          <div class="input-field">
+            <i class="fas fa-phone-alt"></i>
+            <input type="phoneNumber" placeholder="(99) 99999-9999" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Senha" />
+          </div>            
+          <input type="submit" class="btn" value="Criar conta" />
+          <p class="social-text">Ler para crer &copy; 2021</p>          
+        </form>
+      </div>
+    </div>
 
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>É novo por aqui?</h3>
+          <p>
+            Não perca a oportunidade acessar a nossa plataforma grátis de livros e crie a sua conta de maneira simples e rápida.
+          </p>
+          <button class="btn transparent" id="sign-up-btn">
+            Criar conta
+          </button>
+        </div>
+        <img src="img/log.svg" class="image" alt="" />
+      </div>
+      <div class="panel right-panel">
+        <div class="content">
+          <h3>Já tem uma conta?</h3>
+          <p>
+            Tudo continua simples e fácil, então acesse agora e tire todo o proveito que oferecemos para você.
+          </p>
+          <button class="btn transparent" id="sign-in-btn">
+            Fazer login
+          </button>
+        </div>
+        <img src="img/register.svg" class="image" alt="" />
+      </div>
+    </div>
+  </div>
 
-	</head>
-	<body>
-		<!-- NAV BAR -->
-		<nav class="navbar">
-			<a id="Link_navbar" class="navbar-brand" href="index.html">
-				<img src="images/icons/Icone_Nav.png" width="250" height="45" class="d-inline-block align-top" alt="" loading="lazy">
-			</a>
-		</nav>
-		<!-- //NAV BAR --> 
-
-		<!-- main -->
-		<div class="main-w3layouts wrapper">
-			<h1>Login</h1>
-			<div class="main-agileinfo">
-				<div class="agileits-top">
-						
-					<input class="text email" type="email" name="email" placeholder="Email" required="">
-					<input class="text" type="password" name="password" placeholder="Senha" required="">
-			
-					<input type="submit" value="Entrar">
-				
-					<p>Não possui uma conta? <a href="Criar_conta.html"> Cadastre-se!</a></p></br>
-				</div>
-			</div>
-			<div class="rodapé">
-				<p>© 2020 Ler para Crer</p>
-			</div>
-		</div>
-		<!-- //main -->
-
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-	</body>
+  <script src="js/login2.js"></script>
+</body>
 </html>
