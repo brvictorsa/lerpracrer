@@ -41,9 +41,9 @@ function editarLivro(id) {
 
 function removerLivro(id) {
   let htmlInfo = "<br /><button type='button' id='confirmarExclusao' " +
-    "style='outline: none; border: none; color: #fff; background-color: #2f96b4;'>Sim</button>"
+    "style='outline: none; border: none; color: #fff; background-color: #f89406;'>Sim</button>"
 
-  toastr.info(htmlInfo, 'Deseja realmente remover o livro?',
+  toastr.warning(htmlInfo, 'Deseja realmente remover o livro?',
     {
       closeButton: false,
       timeout: 0,
