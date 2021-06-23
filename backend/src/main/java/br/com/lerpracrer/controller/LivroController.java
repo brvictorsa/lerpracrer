@@ -5,6 +5,9 @@ import br.com.lerpracrer.validator.ControllerValidator;
 
 public class LivroController {
     final int ANO_PUBLICACAO_BASE = 1455;
+    final int TAMANHO_MINIMO_TITULO = 3;
+    final int TAMANHO_MINIMO_AUTOR = 5;
+    final int TAMANHO_MINIMO_DESCRICAO = 10;
     private ControllerValidator validator;
 
     public LivroController() {
@@ -47,11 +50,11 @@ public class LivroController {
     * Funções Validadoras
     */
     private boolean isTituloValido(String titulo) {
-        return titulo != null && (!titulo.isEmpty() && titulo.length() >  3);
+        return titulo != null && (!titulo.isEmpty() && titulo.length() >  TAMANHO_MINIMO_TITULO);
     }
 
     private boolean isAutorValido(String autor) {
-        return autor != null && (!autor.isEmpty() || autor.length() > 5);
+        return autor != null && (!autor.isEmpty() || autor.length() > TAMANHO_MINIMO_AUTOR);
     }
 
     private boolean isEditoraValida(String editora) {
@@ -67,6 +70,6 @@ public class LivroController {
     }
 
     private boolean isDescricaoValida(String descricao) {
-        return descricao != null && !descricao.isEmpty() && descricao.length() > 5;
+        return descricao != null && !descricao.isEmpty() && descricao.length() > TAMANHO_MINIMO_DESCRICAO;
     }
 }

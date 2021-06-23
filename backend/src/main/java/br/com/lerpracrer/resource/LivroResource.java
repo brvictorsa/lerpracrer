@@ -78,8 +78,15 @@ public class LivroResource {
     }
 
     @DeleteMapping(value = "/remover/{id}")
-    public ResponseEntity<Livro> remover(@PathVariable(value="id") long id) {
-        livroRepository.deleteById(id);
-        return new ResponseEntity("Livro excluído", HttpStatus.OK);
+    public @ResponseBody String remover(@PathVariable(value="id") long id) {
+        Livro livro = livroRepository.findById(id);
+
+        if(livro != null) {
+            livroRepository.delete(livro);
+            return livro.getTitulo();
+        }
+        else {
+            return "Nenhum livro com o id: " + id + " foi encontrado.";
+        }
     }
 }
