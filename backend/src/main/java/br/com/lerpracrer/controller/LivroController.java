@@ -5,7 +5,7 @@ import br.com.lerpracrer.validator.ControllerValidator;
 
 public class LivroController {
     final int ANO_PUBLICACAO_BASE = 1455;
-    final int TAMANHO_MINIMO_TITULO = 3;
+    final int TAMANHO_MINIMO_TITULO = 2;
     final int TAMANHO_MINIMO_AUTOR = 5;
     final int TAMANHO_MINIMO_DESCRICAO = 10;
     private ControllerValidator validator;
@@ -23,11 +23,11 @@ public class LivroController {
     */
     public void validar(Livro livro) {
         if(!isTituloValido(livro.getTitulo())) {
-            this.getValidator().setMensagemValidacao("Título não pode ser vazio e ter menos de 3 caracteres.");
+            this.getValidator().setMensagemValidacao("Título não pode ser vazio ou ter menos de 3 caracteres.");
         }
 
         if (!isAutorValido(livro.getAutor())) {
-            this.getValidator().setMensagemValidacao("Autor não pode ser vazio.");
+            this.getValidator().setMensagemValidacao("Autor não pode ser vazio ou ter menos de 5 caracteres.");
         }
         if (!isEditoraValida(livro.getEditora())) {
             this.getValidator().setMensagemValidacao("Editora não pode ser vazio.");
@@ -54,7 +54,7 @@ public class LivroController {
     }
 
     private boolean isAutorValido(String autor) {
-        return autor != null && (!autor.isEmpty() || autor.length() > TAMANHO_MINIMO_AUTOR);
+        return autor != null && (!autor.isEmpty() && autor.length() > TAMANHO_MINIMO_AUTOR);
     }
 
     private boolean isEditoraValida(String editora) {
