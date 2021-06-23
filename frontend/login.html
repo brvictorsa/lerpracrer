@@ -9,39 +9,44 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="css/Login2.css" />
+    <link rel="stylesheet" href="css/toastr.min.css">
   <title>Login</title>
 </head>
 <body>
   <div class="container">
     <div class="forms-container">
       <div class="signin-signup">
-        <form action="#" class="sign-in-form">
+        <form id="form-login" class="sign-in-form">
           <h2 class="title">Login</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Usuário" />
+            <input type="text" id="user" placeholder="Usuário" />
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Senha" />
+            <input type="password" id="password" placeholder="Senha" />
           </div>
-          <input type="submit" value="Acessar" class="btn solid" />
+          <input type="submit" id="acessar" value="Acessar" class="btn solid" />
           <p class="social-text">Ler para crer &copy; 2021</p>
         </form>
-        <form action="#" class="sign-up-form">
+        <form id="form-register" class="sign-up-form">
           <h2 class="title">Registrar-se</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Seu usuário" />
+            <input type="text" id="userRegister" placeholder="Seu usuário" />
           </div>          
           <div class="input-field">
             <i class="fas fa-phone-alt"></i>
-            <input type="phoneNumber" placeholder="(99) 99999-9999" />
+            <input type="phoneNumber" id="phoneRegister" placeholder="(99) 99999-9999" />
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Sua senha" />
-          </div>            
+            <input type="password" id="passwordRegister" placeholder="Sua senha" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="confirmPasswordRegister" placeholder="Senha" />
+          </div>          
           <input type="submit" class="btn" value="Criar conta" />
           <p class="social-text">Ler para crer &copy; 2021</p>          
         </form>
@@ -75,7 +80,8 @@
       </div>
     </div>
   </div>
-
-  <script src="js/login2.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="resources/login.js"></script>
+  <script src="js/toastr.min.js"></script>
 </body>
 </html>
