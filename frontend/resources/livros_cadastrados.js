@@ -36,10 +36,13 @@ function buscarLivros() {
 }
 
 function editarLivro(id) {
-  alert("Redirecionar para editar o livro id: ", id);
+  if(!id) return;
+  location.href = 'editar_livro.html?id=' + id;
 }
 
 function removerLivro(id) {
+  if(!id) return;
+
   let htmlInfo = "<br /><button type='button' id='confirmarExclusao' " +
     "style='outline: none; border: none; color: #fff; background-color: #f89406;'>Sim</button>"
 
