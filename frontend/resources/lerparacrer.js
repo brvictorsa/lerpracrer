@@ -12,7 +12,6 @@ function GetURLParameter(sParam) {
 }
 
 function sair() {
-  debugger
   if ($.cookie('jwt_token') !== null || $.cookie('jwt_token') !== undefined) {
     $.removeCookie('jwt_token');
     location.href = "./login.html";
