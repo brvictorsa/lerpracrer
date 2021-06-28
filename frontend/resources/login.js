@@ -40,58 +40,85 @@ $(document).ready(function(){
 //Submeter formulário de login
 $('#form-login').submit(function (event) { 
   event.preventDefault();
+
   //valida os campos preenchidos
   let usuario = $('#user').val();
   let senha = $('#password').val();
-  const dadosPreenchidos = !usuario || !senha;
+  const dadosPreenchidos = usuario.length && senha.length;
 
-  if(!dadosPreenchidos) {
-    alertToast.warning('Usuário e senha são obrigatórios.', 'Aviso - Login');
+  if(dadosPreenchidos) {
+    //Cria o formData
+    let formData = {
+      'username': usuario.trim(),
+      'password': senha.trim()
+    }
+
+    $.ajax({
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      type: 'POST',
+      url: 'http://localhost:8080/api/auth/authenticate',
+      data: JSON.stringify(formData),
+      dataType: 'json',
+      encode: true,
+      success: function (data) {
+          $.cookie('jwt_token', data.jwt);
+          location.href = 'inicial.html';
+      },
+      error: function (data) {
+        alertToast.warning('Usuário ou senha inválidos.', 'Login');
+      }
+  });
+
+  } else {
+    alertToast.warning('Usuário e senha são obrigatórios.', 'Login');
   }
 })
 
 //Submeter formulário de registro (criar conta)
-$('#form-register').submit(function (event) {
-  event.preventDefault();
+// $('#form-register').submit(function (event) {
+//   event.preventDefault();
 
-  const resultado = validarCriacaoDeConta();
+//   const resultado = validarCriacaoDeConta();
 
-  if(!resultado.valido) {
-    alertToast.options.positionClass = "toast-top-left";
-    alertToast.warning(resultado.mensagemValidacao, 'Aviso - Nova Conta');
-  }
+//   if(!resultado.valido) {
+//     alertToast.options.positionClass = "toast-top-left";
+//     alertToast.warning(resultado.mensagemValidacao, 'Aviso - Nova Conta');
+//   }
 
-  //console.log('criar conta');
-})
+//   //console.log('criar conta');
+// })
 
-function validarCriacaoDeConta(usuario, telefone, senha, confirmacaoSenha) {
-  //valida os campos preenchidos
-  const usuarioR = $('#userRegister').val().trim();
-  const telefoneR = $('#phoneRegister').val().trim();
-  const senhaR = $('#passwordRegister').val().trim();
-  const confirmacaoSenhaR = $('#confirmPasswordRegister').val().trim();
+// function validarCriacaoDeConta(usuario, telefone, senha, confirmacaoSenha) {
+//   //valida os campos preenchidos
+//   const usuarioR = $('#userRegister').val().trim();
+//   const telefoneR = $('#phoneRegister').val().trim();
+//   const senhaR = $('#passwordRegister').val().trim();
+//   const confirmacaoSenhaR = $('#confirmPasswordRegister').val().trim();
 
-  const msgUsuarioRInvalido = (usuarioR.length === 0) ? criarMensagemCampoObrigatorio('Usuário') : "";
-  const msgTelefoneRInvalido = (telefoneR.length === 0) ? criarMensagemCampoObrigatorio('Telefone') : "";
-  const msgSenhaRInvalida = (!senhaR.length === 0) ? criarMensagemCampoObrigatorio('Senha', 'F') : "";
-  const msgConfirmacaoSenhaRInvalida = (confirmacaoSenhaR.length === 0) ? criarMensagemCampoObrigatorio('Confirmação de senha', 'F') : "";
+//   const msgUsuarioRInvalido = (usuarioR.length === 0) ? criarMensagemCampoObrigatorio('Usuário') : "";
+//   const msgTelefoneRInvalido = (telefoneR.length === 0) ? criarMensagemCampoObrigatorio('Telefone') : "";
+//   const msgSenhaRInvalida = (!senhaR.length === 0) ? criarMensagemCampoObrigatorio('Senha', 'F') : "";
+//   const msgConfirmacaoSenhaRInvalida = (confirmacaoSenhaR.length === 0) ? criarMensagemCampoObrigatorio('Confirmação de senha', 'F') : "";
 
-  //const senhasConferem = true; (senha && confirmacaoSenhaR && senhaR === confirmacaoSenhaR) ? 
+//   //const senhasConferem = true; (senha && confirmacaoSenhaR && senhaR === confirmacaoSenhaR) ? 
 
-  let mensagensCampos = msgUsuarioRInvalido + msgTelefoneRInvalido + msgSenhaRInvalida + msgConfirmacaoSenhaRInvalida;
-  let mensagemValidacao =  mensagemCampos.length ? '<ul>' + mensagemCampos + '</ul>' : "";   
+//   let mensagensCampos = msgUsuarioRInvalido + msgTelefoneRInvalido + msgSenhaRInvalida + msgConfirmacaoSenhaRInvalida;
+//   let mensagemValidacao =  mensagemCampos.length ? '<ul>' + mensagemCampos + '</ul>' : "";   
 
-  return {
-    valido: !mensagem.length,
-    mensagemValidacao: mensagemValidacao,
-  };
-}
+//   return {
+//     valido: !mensagem.length,
+//     mensagemValidacao: mensagemValidacao,
+//   };
+// }
 
-function criarMensagem (usuario, telefone, ) {
+// function criarMensagem (usuario, telefone, ) {
 
-}
+// }
 
-function criarMensagemCampoObrigatorio(campo, genero ='M') {
-  return '<li>' + campo + ' obrigatóri' + (genero === 'M' ? 'o' : 'a') + '<li>';
-}
+// function criarMensagemCampoObrigatorio(campo, genero ='M') {
+//   return '<li>' + campo + ' obrigatóri' + (genero === 'M' ? 'o' : 'a') + '<li>';
+// }
 

@@ -36,9 +36,9 @@
             d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
         </svg> </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="configuracoes_conta.html">Configurações da conta</a>
+        <!-- <a class="dropdown-item" href="configuracoes_conta.html">Configurações da conta</a> -->
         <a class="dropdown-item" href="livros_cadastrados.html">Meus livros</a>
-        <a class="dropdown-item" href="index.html">Sair</a>
+        <input type="button" class="logoff" value="Sair" onclick="sair()">
       </div>
     </div>
   </nav>
@@ -46,7 +46,7 @@
 
   <!-- main -->
   <div class="main-w3layouts wrapper">
-    <h1>Cadastrar livro</h1><br>
+    <h1>Editar livro</h1><br>
     <div class="main-agileinfo">
       <div class="agileits-top">
         <div class="tab">
@@ -93,6 +93,7 @@
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"></script>
   <script src="js/toastr.min.js"></script>
+  <script src="js/jquery.cookie.js"></script>
   <script src="resources/lerparacrer.js"></script>
   <script src="resources/editar_livro.js"></script>
 </body>

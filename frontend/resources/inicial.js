@@ -1,14 +1,14 @@
 $(document).ready(function () {
-
-  // if ($.cookie('jwt_token') == null || $.cookie('jwt_token') == undefined) {
-  //     alert("Usuário não autenticado");
-  //     location.href = "/academifyfrontend/login.html";
-  // }
+  
+  if ($.cookie('jwt_token') == null || $.cookie('jwt_token') == undefined) {
+    alert('Usuário não autenticado.');
+    location.href = "./login.html";
+  }
 
   $.ajax({
     headers: {
-      'Content-Type': 'application/json'
-      // 'Authorization': 'Beaver ' + $.cookie('jwt_token'),          
+      'Content-Type': 'application/json',
+      'Authorization': 'Beaver ' + $.cookie('jwt_token')          
     },
     url: 'http://localhost:8080/api/livros',
     type: 'get',
@@ -17,7 +17,7 @@ $(document).ready(function () {
       var painelLivros = $("#painel-livros");
       let htmlPnlLivro = "";
 
-      if (painelLivros && result && result.length) {        
+      if (painelLivros && result && result.length) {
         result.forEach(livro => {
           htmlPnlLivro +=
             "<div class='col mt-3'>" +
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
         painelLivros.html(htmlPnlLivro);
       }
-      console.log({result});
+      console.log({ result });
     }
   })
 });

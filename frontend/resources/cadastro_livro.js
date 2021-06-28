@@ -1,3 +1,10 @@
+$(document).ready(function () {
+  if ($.cookie('jwt_token') == null || $.cookie('jwt_token') == undefined) {
+      alert("Usuário não autenticado");
+      location.href = "./login.html";
+  }
+});
+
 $('#form-cadastro-livro').submit(function (event) {
 
   event.preventDefault();
@@ -43,7 +50,7 @@ $('#form-cadastro-livro').submit(function (event) {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        //'Authorization': 'Beaver ' + $.cookie('jwt_token'),
+        'Authorization': 'Beaver ' + $.cookie('jwt_token')
       },
       type: 'POST',
       url: 'http://localhost:8080/api/livros/incluir',
@@ -66,7 +73,9 @@ $('#form-cadastro-livro').submit(function (event) {
               hideMethod: "slideUp"
             }
           );
-          //location.href = 'livros_cadastrados.html';
+          setTimeout(() => {
+            location.href = 'livros_cadastrados.html';
+          }, 11000);          
         }
         else {
           if (data.length) {

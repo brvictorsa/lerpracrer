@@ -1,15 +1,15 @@
 var id_livro = GetURLParameter("id");
 
 $(document).ready(function () {
-  // if ($.cookie('jwt_token') == null || $.cookie('jwt_token') == undefined) {
-  //   alert("Usuário não autenticado");
-  //   location.href = "/academifyfrontend/login.html";
-  // }
+  if ($.cookie('jwt_token') == null || $.cookie('jwt_token') == undefined) {
+    alert("Usuário não autenticado");
+    location.href = "/academifyfrontend/login.html";
+  }
 
   $.ajax({
     headers: {
       'Content-Type': 'application/json',
-      //'Authorization': 'Beaver ' + $.cookie('jwt_token'),
+      'Authorization': 'Beaver ' + $.cookie('jwt_token')
     },
     url: 'http://localhost:8080/api/livros/' + id_livro,
     type: 'GET',
@@ -100,7 +100,7 @@ $('#form-edicao-livro').submit(function (event) {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        //'Authorization': 'Beaver ' + $.cookie('jwt_token'),
+        'Authorization': 'Beaver ' + $.cookie('jwt_token')
       },
       type: 'PUT',
       url: 'http://localhost:8080/api/livros/editar/' + id_livro,
@@ -122,8 +122,10 @@ $('#form-edicao-livro').submit(function (event) {
               showMethod: "slideDown",
               hideMethod: "slideUp"
             }
-          );          
-          // location.href = 'livros_cadastrados.html';
+          );
+          setTimeout(() => {
+            location.href = 'livros_cadastrados.html';
+          }, 11000);
         }
         else {
           if (data.length) {
