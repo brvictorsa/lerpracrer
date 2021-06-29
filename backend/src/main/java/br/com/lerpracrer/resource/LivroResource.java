@@ -63,12 +63,8 @@ public class LivroResource {
                 livro.setAnoPublicacao(dadosLivro.getAnoPublicacao());
                 livro.setNumeroDePaginas(dadosLivro.getNumeroDePaginas());
                 livro.setDescricao(dadosLivro.getDescricao());
-                if(dadosLivro.getIsbn10() != null) {
-                    livro.setIsbn10(dadosLivro.getIsbn10());
-                }
-                if(dadosLivro.getIsbn13() != null) {
-                    livro.setIsbn13(dadosLivro.getIsbn13());
-                }
+                livro.setIsbn10(dadosLivro.getIsbn10());
+                livro.setIsbn13(dadosLivro.getIsbn13());
 
                 livro = livroRepository.save(livro);
                 return new ResponseEntity(livro, HttpStatus.OK);
